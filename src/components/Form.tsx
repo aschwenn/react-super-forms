@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import {
   Field,
-  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion
+  FieldType,
+  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section
 } from '../types'
-import { ButtonContainer } from './styled'
+import { ButtonContainer, SectionChildrenWrapper, SectionWrapper } from './styled'
 import * as DefaultComponents from './defaults'
 import { flatten, initializeData } from './functions'
 
@@ -16,7 +17,8 @@ const Form = ({
   className,
   submitButtonProps,
   cancelButtonProps,
-  components: overloadComponents
+  components: overloadComponents,
+  requiredDenotation
 }: FormProps): React.ReactElement => {
   const [data, setData] = useState<Record<string, string | number | boolean | MultiOption>>({})
   const [valid, setValid] = useState<boolean>(false)
@@ -46,6 +48,62 @@ const Form = ({
 
   if (!fields || !components) return null
 
+  const renderField = (field: Field | Section, index: number, depth = 0): React.ReactElement => {
+    if (field.type === FieldType.SECTION) {
+      field = field as Section
+      return (
+        <SectionWrapper className={field.className} key={index}>
+          {
+            field.title && (
+              <components.title className={field.titleClassName}>
+                {field.title}
+              </components.title>
+            )
+          }
+          {
+            field.subtitle && (
+              <components.subtitle className={field.subtitleClassName}>
+                {field.subtitle}
+              </components.subtitle>
+            )
+          }
+          {
+            field.children && (
+              <SectionChildrenWrapper orientation={field.orientation}>
+                {
+                  field.children.map((child, i, { length }) => (
+                    <SectionChildrenWrapper
+                      orientation={child.type === FieldType.SECTION && (child as Section).orientation}
+                      first={i === 0}
+                      last={i === length - 1}
+                      key={i}
+                    >
+                      { renderField(child, index, depth + 1) }
+                    </SectionChildrenWrapper>
+                  ))
+                }
+              </SectionChildrenWrapper>
+            )
+          }
+        </SectionWrapper>
+      )
+    } else {
+      field = field as Field
+      return (
+        <components.formgroup
+          label={field.label}
+          labelFor={field.id}
+          requiredDenotation={requiredDenotation}
+          hint={field.hint}
+          className={field.className}
+          key={field.id}
+        >
+          {}
+        </components.formgroup>
+      )
+    }
+  }
+
   return (
     <form
       className={className}
@@ -55,6 +113,7 @@ const Form = ({
         if (valid) onSubmit(data)
       }}
     >
+      { fields.map((field, i) => renderField(field, i)) }
       {
         !liveSubmit && (
           <ButtonContainer>
@@ -68,7 +127,10 @@ const Form = ({
                 </components.button>
               )
             }
-            <components.button className={submitButtonProps?.className}>
+            <components.button
+              className={submitButtonProps?.className}
+              disabled={!valid}
+            >
               {submitButtonProps?.children || 'Submit'}
             </components.button>
           </ButtonContainer>

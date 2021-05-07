@@ -1,1 +1,5 @@
 export { default as ButtonContainer } from './ButtonContainer'
+export { default as SectionWrapper } from './SectionWrapper'
+export { default as SectionChildrenWrapper } from './SectionChildrenWrapper'
+export { default as SectionChildWrapper } from './SectionChildWrapper'
+export { default as Muted } from './Muted'

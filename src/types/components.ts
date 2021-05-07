@@ -3,6 +3,7 @@ import {
   Field
 } from './fields'
 import { Section } from './section'
+import { OverloadComponent } from './overload-components'
 
 /** higher-level types used for component validation */
 
@@ -11,10 +12,6 @@ export interface FormButtonProps {
   children?: React.ReactNode
   /** classname for styling the button */
   className?: string
-}
-
-export enum OverloadComponent {
-  BUTTON = 'button'
 }
 
 export interface FormProps {
@@ -34,4 +31,6 @@ export interface FormProps {
   cancelButtonProps?: FormButtonProps
   /** allow for overloading of default components with custom components */
   components?: Record<OverloadComponent, React.FC>
+  /** identifier for required fields, defaults to (required) */
+  requiredDenotation?: string
 }
