@@ -22,10 +22,12 @@ export default [
           },
           {
             type: FieldType.TEXT,
-            id: 'projectOwner',
-            label: 'Project Owner',
-            placeholder: 'Enter a project owner...',
-            maxLength: 50
+            id: 'password',
+            label: 'Password',
+            placeholder: 'Enter an access password...',
+            maxLength: 50,
+            password: true,
+            required: true
           }
         ]
       },

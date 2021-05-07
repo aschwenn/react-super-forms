@@ -31,7 +31,9 @@ export interface FormGroup {
   /** classname for styling */
   className?: string
 }
-export interface TextInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
+export interface TextInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  password?: boolean
+}
 export interface TextAreaInput extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {}
 
 export type OverloadComponentUnion = Button | Heading | FormGroup | TextInput | TextAreaInput

@@ -2,9 +2,10 @@ import React from 'react'
 
 import { TextInput } from '../../types'
 
-export default (props: TextInput): React.ReactElement => (
+export default ({ password, autoComplete, ...props }: TextInput): React.ReactElement => (
   <input
-    type="text"
+    type={password ? 'password' : 'text'}
+    autoComplete={autoComplete ? 'on' : 'off'}
     {...props}
   />
 )

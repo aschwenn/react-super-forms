@@ -46,6 +46,8 @@ export interface TextField extends Field {
   maxLength?: number
   /** whether to enable or disable browser autocomplete */
   autoComplete?: boolean
+  /** whether or not the text represents a password */
+  password?: boolean
 }
 
 export interface TextAreaField extends Field {

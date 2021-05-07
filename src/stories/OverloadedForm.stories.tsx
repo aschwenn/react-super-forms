@@ -9,7 +9,7 @@ import {
 } from '@blueprintjs/core'
 import styled from 'styled-components'
 
-import './OverloadedForm.css'
+// import './OverloadedForm.css'
 import Form from '..'
 import BasicForm from './BasicForm'
 import { FormProps } from '../types'

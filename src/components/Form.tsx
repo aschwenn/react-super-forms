@@ -7,7 +7,7 @@ import {
 } from '../types'
 import { ButtonContainer, SectionChildrenWrapper, SectionChildWrapper, SectionWrapper, StyledForm } from './styled'
 import * as DefaultComponents from './defaults'
-import { flatten, initializeData } from './functions'
+import { flatten, initializeData, removeExtraProps } from './functions'
 
 const Form = ({
   fields,
@@ -51,41 +51,44 @@ const Form = ({
   const renderInput = (field: Field): React.ReactElement => {
     switch (field.type) {
     case FieldType.TEXT: {
-      const f = field as TextField
+      const {
+        id,
+        placeholder,
+        ...tmp
+      } = field as TextField
+      const fieldProps = removeExtraProps(tmp as TextField)
       return (
         <components.textfield
-          id={f.id}
-          name={f.id}
-          value={data[f.id] as string | number}
+          id={id}
+          name={id}
+          value={data[id] as string | number}
           onChange={(e) => {
             const tmp = e.target.value
-            setData((prev) => ({ ...prev, [f.id]: tmp }))
+            setData((prev) => ({ ...prev, [id]: tmp }))
           }}
-          disabled={f.disabled}
-          placeholder={f.placeholder || 'Enter some text...'}
-          autoFocus={f.autoFocus}
-          autoComplete={f.autoComplete ? 'on' : 'off'}
-          defaultValue={f.defaultValue}
-          maxLength={f.maxLength}
+          placeholder={placeholder || 'Enter some text...'}
+          {...fieldProps}
         />
       )
     }
     case FieldType.TEXTAREA: {
-      const f = field as TextAreaField
+      const {
+        id,
+        placeholder,
+        ...tmp
+      } = field as TextField
+      const fieldProps = removeExtraProps(tmp as TextField)
       return (
         <components.textareafield
-          id={f.id}
-          name={f.id}
-          value={data[f.id] as string | number}
+          id={id}
+          name={id}
+          value={data[id] as string | number}
           onChange={(e) => {
             const tmp = e.target.value
-            setData((prev) => ({ ...prev, [f.id]: tmp }))
+            setData((prev) => ({ ...prev, [id]: tmp }))
           }}
-          disabled={f.disabled}
-          placeholder={f.placeholder || 'Enter some text...'}
-          autoFocus={f.autoFocus}
-          defaultValue={f.defaultValue}
-          maxLength={f.maxLength}
+          placeholder={placeholder || 'Enter some text...'}
+          {...fieldProps}
         />
       )
     }
