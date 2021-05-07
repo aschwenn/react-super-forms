@@ -21,7 +21,7 @@ const Required = styled.span`
 const Hint = styled.span`
   color: ${colors.muted};
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  font-size: 0.8em;
   font-weight: lighter;
 `
 

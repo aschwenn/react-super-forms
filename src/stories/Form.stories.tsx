@@ -23,13 +23,26 @@ Simple.args = {
       orientation: Orientation.Column,
       children: [
         {
-          type: FieldType.TEXT,
-          id: 'projectName',
-          label: 'Project Name',
-          required: true,
-          placeholder: 'Enter the name of your project...',
-          hint: 'Don\'t worry, you can change this later!',
-          maxLength: 30
+          type: FieldType.SECTION,
+          orientation: Orientation.Row,
+          children: [
+            {
+              type: FieldType.TEXT,
+              id: 'projectName',
+              label: 'Project Name',
+              required: true,
+              placeholder: 'Enter the name of your project...',
+              hint: 'Don\'t worry, you can change this later!',
+              maxLength: 50
+            },
+            {
+              type: FieldType.TEXT,
+              id: 'projectOwner',
+              label: 'Project Owner',
+              placeholder: 'Enter a project owner...',
+              maxLength: 50
+            }
+          ]
         },
         {
           type: FieldType.TEXTAREA,

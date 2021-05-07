@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import {
   Field,
   FieldType,
-  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section, TextAreaField, TextField
+  FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, Section, TextAreaField, TextField
 } from '../types'
-import { ButtonContainer, SectionChildrenWrapper, SectionWrapper, StyledForm } from './styled'
+import { ButtonContainer, SectionChildrenWrapper, SectionChildWrapper, SectionWrapper, StyledForm } from './styled'
 import * as DefaultComponents from './defaults'
 import { flatten, initializeData } from './functions'
 
@@ -116,14 +116,14 @@ const Form = ({
               <SectionChildrenWrapper orientation={field.orientation} paddingTop={field.title || field.subtitle}>
                 {
                   field.children.map((child, i, { length }) => (
-                    <SectionChildrenWrapper
-                      orientation={child.type === FieldType.SECTION && (child as Section).orientation}
+                    <SectionChildWrapper
+                      orientation={(field as Section).orientation || Orientation.Column}
                       first={i === 0}
                       last={i === length - 1}
                       key={i}
                     >
                       { renderField(child, index, depth + 1) }
-                    </SectionChildrenWrapper>
+                    </SectionChildWrapper>
                   ))
                 }
               </SectionChildrenWrapper>
