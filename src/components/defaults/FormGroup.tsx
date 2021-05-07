@@ -12,7 +12,11 @@ const FormGroupWrapper = styled.div`
 const Label = styled.label`
   margin-bottom: 0.25rem;
 `
+const Required = styled(Muted)`
+  margin-left: 0.25rem;
+`
 const Hint = styled(Muted)`
+  margin-top: 0.25rem;
   font-size: 0.875em;
 `
 
@@ -29,7 +33,7 @@ export default ({
   <FormGroupWrapper className={className} {...props}>
     <Label for={labelFor}>
       {label}
-      {required && <Muted>&nbps;{requiredDenotation}</Muted>}
+      {required && <Required>{requiredDenotation}</Required>}
     </Label>
     {children}
     {hint && <Hint>{hint}</Hint>}

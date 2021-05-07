@@ -3,5 +3,5 @@ import { Orientation } from '../../types'
 
 export default styled.div`
   display: flex;
-  flex-direction: ${({ orientation }) => orientation === Orientation.Column ? 'column' : 'row'};
+  flex-direction: ${({ orientation }) => orientation === Orientation.Row ? 'row' : 'column'};
 `

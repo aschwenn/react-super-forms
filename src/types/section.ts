@@ -13,7 +13,7 @@ export interface Section {
   subtitle?: string
   titleClassName?: string
   subtitleClassName?: string
-  /** orientation of children, defaults to row */
+  /** orientation of children, defaults to column */
   orientation?: Orientation
   /** child fields to render inside of section */
   children: Array<Field | Section>

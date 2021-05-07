@@ -139,6 +139,7 @@ const Form = ({
           labelFor={field.id}
           requiredDenotation={requiredDenotation}
           hint={field.hint}
+          required={field.required}
           className={field.className}
           key={field.id}
         >
