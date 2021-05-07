@@ -8,7 +8,7 @@ import { Section } from './section'
 
 export interface FormButtonProps {
   /** children to be rendered inside of button */
-  children?: string | React.ReactNode
+  children?: React.ReactNode
   /** classname for styling the button */
   className?: string
 }

@@ -1,5 +1,6 @@
 import React from 'react'
+import { Button } from '../../types'
 
-export default (props): React.ReactElement => (
+export default (props: Button): React.ReactElement => (
   <button {...props} />
 )
