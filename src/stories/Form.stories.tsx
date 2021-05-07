@@ -16,6 +16,5 @@ const Template: Story<FormProps> = (args) => <Form {...args} />
 
 export const Simple = Template.bind({})
 Simple.args = {
-  primary: true,
-  label: 'Simple Form',
+  fields: []
 }

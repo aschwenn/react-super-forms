@@ -13,6 +13,10 @@ export interface FormButtonProps {
   className?: string
 }
 
+export enum OverloadComponent {
+  BUTTON = 'button'
+}
+
 export interface FormProps {
   /** structure of form to be rendered */
   fields: Array<Field | Section>
@@ -28,4 +32,6 @@ export interface FormProps {
   submitButtonProps?: FormButtonProps
   /** settings for cancel button */
   cancelButtonProps?: FormButtonProps
+  /** allow for overloading of default components with custom components */
+  components?: Record<OverloadComponent, React.FC>
 }
