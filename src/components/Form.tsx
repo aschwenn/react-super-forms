@@ -5,7 +5,7 @@ import {
   FieldType,
   FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section, TextAreaField, TextField
 } from '../types'
-import { ButtonContainer, SectionChildrenWrapper, SectionWrapper } from './styled'
+import { ButtonContainer, SectionChildrenWrapper, SectionWrapper, StyledForm } from './styled'
 import * as DefaultComponents from './defaults'
 import { flatten, initializeData } from './functions'
 
@@ -113,7 +113,7 @@ const Form = ({
           }
           {
             field.children && (
-              <SectionChildrenWrapper orientation={field.orientation}>
+              <SectionChildrenWrapper orientation={field.orientation} paddingTop={field.title || field.subtitle}>
                 {
                   field.children.map((child, i, { length }) => (
                     <SectionChildrenWrapper
@@ -150,7 +150,7 @@ const Form = ({
   }
 
   return (
-    <form
+    <StyledForm
       className={className}
       onSubmit={(e) => {
         /** prevent submitting before validating */
@@ -181,7 +181,7 @@ const Form = ({
           </ButtonContainer>
         )
       }
-    </form>
+    </StyledForm>
   )
 }
 

@@ -2,22 +2,27 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { FormGroup } from '../../types'
-import { Muted } from '../styled'
+import colors from '../colors'
 
 const FormGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 0.5rem 0;
 `
 const Label = styled.label`
+  font-weight: lighter;
   margin-bottom: 0.25rem;
 `
-const Required = styled(Muted)`
+const Required = styled.span`
+  font-weight: lighter;
+  color: ${colors.muted};
   margin-left: 0.25rem;
 `
-const Hint = styled(Muted)`
+const Hint = styled.span`
+  color: ${colors.muted};
   margin-top: 0.25rem;
   font-size: 0.875em;
+  font-weight: lighter;
 `
 
 export default ({

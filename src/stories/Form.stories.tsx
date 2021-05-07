@@ -24,8 +24,8 @@ Simple.args = {
       children: [
         {
           type: FieldType.TEXT,
-          id: 'name',
-          label: 'Name',
+          id: 'projectName',
+          label: 'Project Name',
           required: true,
           placeholder: 'Enter the name of your project...',
           hint: 'Don\'t worry, you can change this later!',
@@ -41,5 +41,5 @@ Simple.args = {
       ]
     }
   ],
-  onSubmit: (data) => console.info(data)
+  onSubmit: (data) => console.info(data),
 }
