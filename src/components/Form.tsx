@@ -4,9 +4,17 @@ import {
   FormProps
 } from '../types'
 
-const Form = (props: FormProps): React.ReactElement => {
+const Form = ({
+  fields,
+  onSubmit,
+  liveSubmit,
+  onCancel,
+  className,
+  submitButtonProps,
+  cancelButtonProps
+}: FormProps): React.ReactElement => {
   return (
-    <div>
+    <div className={className}>
       Test
     </div>
   )
