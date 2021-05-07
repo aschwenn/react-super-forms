@@ -7,16 +7,20 @@
       "jsx": true
     }
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "extends": [
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
-  "rules": {}
+  "rules": {
+    "semi": "error",
+    "indent": ["error", 2]
+  }
 }
