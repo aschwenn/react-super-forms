@@ -8,7 +8,8 @@ export enum OverloadComponent {
   BUTTON = 'button',
   TITLE = 'title',
   SUBTITLE = 'subtitle',
-  FORMGROUP = 'formgroup'
+  FORMGROUP = 'formgroup',
+  TEXTFIELD = 'textfield'
 }
 
 export interface Button extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
@@ -29,5 +30,6 @@ export interface FormGroup {
   /** classname for styling */
   className?: string
 }
+export interface TextInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 
-export type OverloadComponentUnion = Button | Heading | FormGroup
+export type OverloadComponentUnion = Button | Heading | FormGroup | TextInput

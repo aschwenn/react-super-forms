@@ -44,6 +44,8 @@ export interface TextField extends Field {
   defaultValue?: string
   /** maximum length of allowed characters */
   maxLength?: number
+  /** whether to enable or disable browser autocomplete */
+  autoComplete?: boolean
 }
 
 export interface TextAreaField extends Field {

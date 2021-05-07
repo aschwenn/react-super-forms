@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {
   Field,
   FieldType,
-  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section
+  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section, TextField
 } from '../types'
 import { ButtonContainer, SectionChildrenWrapper, SectionWrapper } from './styled'
 import * as DefaultComponents from './defaults'
@@ -47,6 +47,30 @@ const Form = ({
   }, [fields])
 
   if (!fields || !components) return null
+
+  const renderInput = (field: Field): React.ReactElement => {
+    switch (field.type) {
+    case FieldType.TEXT: {
+      const f = field as TextField
+      return (
+        <components.textfield
+          id={f.id}
+          value={data[f.id] as string | number}
+          onChange={(e) => {
+            const tmp = e.target.value
+            setData((prev) => ({ ...prev, [f.id]: tmp }))
+          }}
+          disabled={f.disabled}
+          placeholder={f.placeholder || 'Enter some text...'}
+          autoFocus={f.autoFocus}
+          autoComplete={f.autoComplete ? 'on' : 'off'}
+          defaultValue={f.defaultValue}
+          maxLength={f.maxLength}
+        />
+      )
+    }
+    }
+  }
 
   const renderField = (field: Field | Section, index: number, depth = 0): React.ReactElement => {
     if (field.type === FieldType.SECTION) {
@@ -98,7 +122,7 @@ const Form = ({
           className={field.className}
           key={field.id}
         >
-          {}
+          { renderInput(field) }
         </components.formgroup>
       )
     }
