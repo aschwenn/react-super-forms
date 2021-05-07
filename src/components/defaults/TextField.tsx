@@ -4,7 +4,6 @@ import { TextInput } from '../../types'
 export default (props: TextInput): React.ReactElement => (
   <input
     type="text"
-    name={props.id}
     {...props}
   />
 )

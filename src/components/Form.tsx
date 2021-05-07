@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {
   Field,
   FieldType,
-  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section, TextField
+  FormProps, MultiOption, OverloadComponent, OverloadComponentUnion, Section, TextAreaField, TextField
 } from '../types'
 import { ButtonContainer, SectionChildrenWrapper, SectionWrapper } from './styled'
 import * as DefaultComponents from './defaults'
@@ -55,6 +55,7 @@ const Form = ({
       return (
         <components.textfield
           id={f.id}
+          name={f.id}
           value={data[f.id] as string | number}
           onChange={(e) => {
             const tmp = e.target.value
@@ -64,6 +65,25 @@ const Form = ({
           placeholder={f.placeholder || 'Enter some text...'}
           autoFocus={f.autoFocus}
           autoComplete={f.autoComplete ? 'on' : 'off'}
+          defaultValue={f.defaultValue}
+          maxLength={f.maxLength}
+        />
+      )
+    }
+    case FieldType.TEXTAREA: {
+      const f = field as TextAreaField
+      return (
+        <components.textareafield
+          id={f.id}
+          name={f.id}
+          value={data[f.id] as string | number}
+          onChange={(e) => {
+            const tmp = e.target.value
+            setData((prev) => ({ ...prev, [f.id]: tmp }))
+          }}
+          disabled={f.disabled}
+          placeholder={f.placeholder || 'Enter some text...'}
+          autoFocus={f.autoFocus}
           defaultValue={f.defaultValue}
           maxLength={f.maxLength}
         />
