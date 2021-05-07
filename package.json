@@ -23,6 +23,7 @@
   "homepage": "https://github.com/aschwenn/react-super-forms#readme",
   "devDependencies": {
     "@babel/core": "^7.14.0",
+    "@blueprintjs/core": "^3.44.2",
     "@rollup/plugin-commonjs": "^18.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@storybook/addon-actions": "^6.2.9",
