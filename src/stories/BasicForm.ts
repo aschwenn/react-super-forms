@@ -1,4 +1,4 @@
-import { FieldType, Orientation } from '../types'
+import { FieldType, Orientation, TextFieldType } from '../types'
 
 export default [
   {
@@ -26,7 +26,7 @@ export default [
             label: 'Password',
             placeholder: 'Enter an access password...',
             maxLength: 50,
-            password: true,
+            textFieldType: TextFieldType.PASSWORD,
             required: true
           }
         ]

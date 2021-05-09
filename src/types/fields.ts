@@ -3,6 +3,16 @@
 export enum FieldType {
   TEXT = 'text',
   TEXTAREA = 'textarea',
+  RADIO = 'radio',
+  CHECKBOX = 'checkbox',
+  COLOR = 'color',
+  DATE = 'date',
+  DATETIME = 'datetime',
+  TIME = 'time',
+  FILE = 'file',
+  NUMBER = 'number',
+  RANGE = 'range',
+  PHONE = 'phone',
   SECTION = 'section'
 }
 
@@ -37,6 +47,8 @@ export interface Field {
 
 /** individual field definitions */
 
+export enum TextFieldType { PASSWORD = 'password', EMAIL = 'email', SEARCH = 'search', URL = 'url' }
+
 export interface TextField extends Field {
   /** subtle placeholder value to be displayed when field is empty */
   placeholder?: string
@@ -46,8 +58,8 @@ export interface TextField extends Field {
   maxLength?: number
   /** whether to enable or disable browser autocomplete */
   autoComplete?: boolean
-  /** whether or not the text represents a password */
-  password?: boolean
+  /** specific type that the text represents */
+  textFieldType?: TextFieldType
 }
 
 export interface TextAreaField extends Field {

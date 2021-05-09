@@ -3,6 +3,7 @@
 /** input props for any components that can be overloaded */
 
 import React from 'react'
+import { TextFieldType } from './fields'
 
 export enum OverloadComponent {
   BUTTON = 'button',
@@ -32,7 +33,7 @@ export interface FormGroup {
   className?: string
 }
 export interface TextInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  password?: boolean
+  textFieldType?: TextFieldType
 }
 export interface TextAreaInput extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {}
 
