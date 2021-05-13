@@ -70,3 +70,10 @@ export interface TextAreaField extends Field {
   /** maximum length of allowed characters */
   maxLength?: number
 }
+
+export interface RadioField extends Field {
+  /** list of selectable items */
+  items: Array<MultiOption>
+  /** default value to be passed when rendered */
+  defaultValue?: string | MultiOption
+}

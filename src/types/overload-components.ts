@@ -9,9 +9,11 @@ export enum OverloadComponent {
   BUTTON = 'button',
   TITLE = 'title',
   SUBTITLE = 'subtitle',
-  FORMGROUP = 'formgroup',
-  TEXTFIELD = 'textfield',
-  TEXTAREAFIELD = 'textareafield'
+  FORM_GROUP = 'formgroup',
+  TEXT_FIELD = 'textfield',
+  TEXTAREA_FIELD = 'textareafield',
+  RADIO = 'radio',
+  RADIO_GROUP = 'radiogroup'
 }
 
 export interface Button extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
@@ -36,5 +38,9 @@ export interface TextInput extends React.DetailedHTMLProps<React.InputHTMLAttrib
   textFieldType?: TextFieldType
 }
 export interface TextAreaInput extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {}
+export interface Input extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
+export interface Container {
+  children: Array<React.ReactNode>
+}
 
-export type OverloadComponentUnion = Button | Heading | FormGroup | TextInput | TextAreaInput
+export type OverloadComponentUnion = Button | Heading | FormGroup | TextInput | TextAreaInput | Input | Container

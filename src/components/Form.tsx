@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {
   Field,
   FieldType,
-  FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, Section, TextAreaField, TextField
+  FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, RadioField, Section, TextAreaField, TextField
 } from '../types'
 import { ButtonContainer, SectionChildrenWrapper, SectionChildWrapper, SectionWrapper, StyledForm } from './styled'
 import * as DefaultComponents from './defaults'
@@ -76,8 +76,8 @@ const Form = ({
         id,
         placeholder,
         ...tmp
-      } = field as TextField
-      const fieldProps = removeExtraProps(tmp as TextField)
+      } = field as TextAreaField
+      const fieldProps = removeExtraProps(tmp as TextAreaField)
       return (
         <components.textareafield
           id={id}
@@ -90,6 +90,26 @@ const Form = ({
           placeholder={placeholder || 'Enter some text...'}
           {...fieldProps}
         />
+      )
+    }
+    case FieldType.RADIO: {
+      const {
+        id,
+        items
+      } = field as RadioField
+      return (
+        <components.radiogroup>
+          {
+            (items || []).map((item, i) => (
+              <components.radio
+                id={item.value.toString()}
+                key={i}
+                label={item.label}
+                onChange={() => setData((prev) => ({ ...prev, [id]: item.value }))}
+              />
+            ))
+          }
+        </components.radiogroup>
       )
     }
     }

@@ -1,4 +1,4 @@
-import { Field, FieldType, MultiOption, TextAreaField, TextField } from '../../types'
+import { Field, FieldType, MultiOption, RadioField, TextAreaField, TextField } from '../../types'
 
 export default (flattened_fields: Array<Field>): Record<string, string | number | boolean | MultiOption> => {
   const tmp = {}
@@ -13,6 +13,16 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
       const tmpField = f as TextAreaField
       tmp[tmpField.id] = tmpField.defaultValue || ''
       break
+    }
+    case FieldType.RADIO: {
+      const tmpField = f as RadioField
+      tmp[tmpField.id] = (
+        tmpField.defaultValue !== undefined && tmpField.defaultValue !== null
+          ? (typeof tmpField.defaultValue === 'object')
+            ? tmpField.defaultValue.value
+            : tmpField.defaultValue
+          : undefined
+      )
     }
     }
   })
