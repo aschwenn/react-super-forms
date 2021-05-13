@@ -105,7 +105,9 @@ const Form = ({
                 id={item.value.toString()}
                 key={i}
                 label={item.label}
+                name={id}
                 onChange={() => setData((prev) => ({ ...prev, [id]: item.value }))}
+                checked={data[id] === item.value}
               />
             ))
           }
@@ -114,6 +116,7 @@ const Form = ({
     }
     }
   }
+  console.log(data)
 
   const renderField = (field: Field | Section, index: number, depth = 0): React.ReactElement => {
     if (field.type === FieldType.SECTION) {

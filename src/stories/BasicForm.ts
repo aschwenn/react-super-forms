@@ -37,6 +37,23 @@ export default [
         label: 'Description',
         required: true,
         placeholder: 'Enter a description of your project...'
+      },
+      {
+        type: FieldType.SECTION,
+        orientation: Orientation.Row,
+        children: [
+          {
+            type: FieldType.RADIO,
+            id: 'radio',
+            label: 'Radio Options',
+            required: true,
+            items: [
+              { value: 0, label: 'Apple' },
+              { value: 1, label: 'Orange' },
+              { value: 2, label: 'Banana' }
+            ]
+          }
+        ]
       }
     ]
   }
