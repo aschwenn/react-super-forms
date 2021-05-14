@@ -107,7 +107,7 @@ const Form = ({
                 label={item.label}
                 name={id}
                 onChange={() => setData((prev) => ({ ...prev, [id]: item.value }))}
-                checked={data[id] === item.value}
+                checked={(data[id] as MultiOption).value === item.value}
               />
             ))
           }

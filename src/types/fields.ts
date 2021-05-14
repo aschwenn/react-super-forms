@@ -77,3 +77,10 @@ export interface RadioField extends Field {
   /** default value to be passed when rendered */
   defaultValue?: string | MultiOption
 }
+
+export interface CheckboxField extends Field {
+  /** list of selectable items */
+  items: Array<MultiOption>
+  /** default value to be passed when rendered */
+  defaultValue?: Array<string | MultiOption>
+}
