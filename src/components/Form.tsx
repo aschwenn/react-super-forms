@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import {
+  CheckboxField,
   Field,
   FieldType,
   FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, RadioField, Section, TextAreaField, TextField
@@ -20,7 +21,7 @@ const Form = ({
   components: overloadComponents,
   requiredDenotation
 }: FormProps): React.ReactElement => {
-  const [data, setData] = useState<Record<string, string | number | boolean | MultiOption>>({})
+  const [data, setData] = useState<Record<string, string | number | boolean | MultiOption | Array<MultiOption>>>({})
   const [valid, setValid] = useState<boolean>(false)
   const [flattenedFields, setFlattenedFields] = useState<Array<Field>>([])
   /** hashmap of overloadable components to be used in form */
@@ -106,12 +107,46 @@ const Form = ({
                 key={i}
                 label={item.label}
                 name={id}
-                onChange={() => setData((prev) => ({ ...prev, [id]: item.value }))}
-                checked={(data[id] as MultiOption).value === item.value}
+                onChange={() => setData((prev) => ({ ...prev, [id]: item }))}
+                checked={(data[id] as MultiOption)?.value === item.value}
               />
             ))
           }
         </components.radiogroup>
+      )
+    }
+    case FieldType.CHECKBOX: {
+      const {
+        id,
+        items
+      } = field as CheckboxField
+      const checkboxIds = (data[id] as Array<MultiOption>).map((obj) => obj.value)
+      return (
+        <components.checkboxgroup>
+          {
+            (items || []).map((item, i) => (
+              <components.checkbox
+                id={item.value.toString()}
+                key={i}
+                label={item.label}
+                name={id}
+                onChange={() => {
+                  const newList = data[id] as Array<MultiOption>
+                  const maybeIndex = checkboxIds.indexOf(item.value)
+                  if (maybeIndex === -1) {
+                    /** add to list */
+                    newList.push(item)
+                  } else {
+                    /** remove from list */
+                    newList.splice(maybeIndex, 1)
+                  }
+                  setData((prev) => ({ ...prev, [id]: newList }))
+                }}
+                checked={checkboxIds.includes(item.value)}
+              />
+            ))
+          }
+        </components.checkboxgroup>
       )
     }
     }

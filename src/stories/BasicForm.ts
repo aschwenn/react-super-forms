@@ -52,6 +52,17 @@ export default [
               { value: 1, label: 'Orange' },
               { value: 2, label: 'Banana' }
             ]
+          },
+          {
+            type: FieldType.CHECKBOX,
+            id: 'checkbox',
+            label: 'Checkbox Options',
+            required: true,
+            items: [
+              { value: 'red', label: 'Red' },
+              { value: 'blue', label: 'Blue' },
+              { value: 'yellow', label: 'Yellow' }
+            ]
           }
         ]
       }

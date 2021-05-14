@@ -5,6 +5,7 @@ export enum FieldType {
   TEXTAREA = 'textarea',
   RADIO = 'radio',
   CHECKBOX = 'checkbox',
+  SELECT = 'select',
   COLOR = 'color',
   DATE = 'date',
   DATETIME = 'datetime',
