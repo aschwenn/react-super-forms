@@ -13,7 +13,9 @@ export enum OverloadComponent {
   TEXT_FIELD = 'textfield',
   TEXTAREA_FIELD = 'textareafield',
   RADIO = 'radio',
-  RADIO_GROUP = 'radiogroup'
+  RADIO_GROUP = 'radiogroup',
+  CHECKBOX = 'checkbox',
+  CHECKBOX_GROUP = 'checkboxgroup'
 }
 
 export interface Button extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}

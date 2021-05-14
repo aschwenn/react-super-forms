@@ -7,7 +7,8 @@ import {
   TextArea,
   Button,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Checkbox
 } from '@blueprintjs/core'
 import styled from 'styled-components'
 
@@ -45,6 +46,7 @@ Simple.args = {
     textareafield: (props) => <StyledTextArea fill {...props} />,
     button: (props) => <Button {...props} />,
     radio: (props) => <Radio {...props} />,
-    radiogroup: (props) => <RadioGroup {...props} />
+    radiogroup: (props) => <RadioGroup {...props} />,
+    checkbox: (props) => <Checkbox {...props} />
   }
 }
