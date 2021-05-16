@@ -15,7 +15,9 @@ export enum OverloadComponent {
   RADIO = 'radio',
   RADIO_GROUP = 'radiogroup',
   CHECKBOX = 'checkbox',
-  CHECKBOX_GROUP = 'checkboxgroup'
+  CHECKBOX_GROUP = 'checkboxgroup',
+  SELECT = 'select',
+  SELECT_OPTION = 'selectoption'
 }
 
 export interface Button extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
@@ -44,5 +46,11 @@ export interface Input extends React.DetailedHTMLProps<React.InputHTMLAttributes
 export interface Container {
   children: Array<React.ReactNode>
 }
+export interface Select extends React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
+  label: string
+}
+export interface SelectOption extends React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement> {}
 
-export type OverloadComponentUnion = Button | Heading | FormGroup | TextInput | TextAreaInput | Input | Container
+export type OverloadComponentUnion = (
+  Button | Heading | FormGroup | TextInput | TextAreaInput | Input | Container | Select | SelectOption
+)
