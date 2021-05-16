@@ -85,3 +85,10 @@ export interface CheckboxField extends Field {
   /** default value to be passed when rendered */
   defaultValue?: Array<string | MultiOption>
 }
+
+export interface SelectField extends Field {
+  /** list of selectable items */
+  items: Array<MultiOption>
+  /** default value to be passed when rendered */
+  defaultValue?: string | MultiOption
+}

@@ -1,4 +1,4 @@
-import { CheckboxField, Field, FieldType, MultiOption, RadioField, TextAreaField, TextField } from '../../types'
+import { CheckboxField, Field, FieldType, MultiOption, RadioField, SelectField, TextAreaField, TextField } from '../../types'
 
 export default (flattened_fields: Array<Field>): Record<string, string | number | boolean | MultiOption> => {
   const tmp = {}
@@ -42,6 +42,20 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
         )
       }
       else tmp[tmpField.id] = []
+      break
+    }
+    case FieldType.SELECT: {
+      const tmpField = f as SelectField
+      if (tmpField.defaultValue !== undefined && tmpField.defaultValue !== null && tmpField.items) {
+        const defaultId = (
+          (typeof tmpField.defaultValue === 'object')
+            ? tmpField.defaultValue.value
+            : tmpField.defaultValue
+        )
+        const maybeIndex = tmpField.items.map((item) => item.value).indexOf(defaultId)
+        if (maybeIndex >= 0) tmp[tmpField.id] = tmpField.items[maybeIndex]
+        else tmp[tmpField.id] = undefined
+      } tmp[tmpField.id] = undefined
       break
     }
     }
