@@ -4,7 +4,7 @@ import {
   CheckboxField,
   Field,
   FieldType,
-  FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, RadioField, Section, TextAreaField, TextField
+  FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, RadioField, Section, SelectField, TextAreaField, TextField
 } from '../types'
 import { ButtonContainer, SectionChildrenWrapper, SectionChildWrapper, SectionWrapper, StyledForm } from './styled'
 import * as DefaultComponents from './defaults'
@@ -147,6 +147,34 @@ const Form = ({
             ))
           }
         </components.checkboxgroup>
+      )
+    }
+    case FieldType.SELECT: {
+      const {
+        id,
+        items
+      } = field as SelectField
+      return (
+        <components.select
+          onChange={(e) =>{
+            const value = e.target.value
+            const obj = items.filter((it) => it.value.toString() === value)[0]
+            setData((prev) => ({ ...prev, [id]: obj }))
+          }}
+        >
+          {
+            (items || []).map((item, i) => (
+              <components.selectoption
+                id={item.value.toString()}
+                key={i}
+                label={item.label}
+                name={id}
+                value={item.value.toString()}
+                selected={(data[id] as MultiOption)?.value === item.value}
+              />
+            ))
+          }
+        </components.select>
       )
     }
     }

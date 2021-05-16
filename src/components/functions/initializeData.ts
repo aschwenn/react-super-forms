@@ -25,7 +25,7 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
         const maybeIndex = tmpField.items.map((item) => item.value).indexOf(defaultId)
         if (maybeIndex >= 0) tmp[tmpField.id] = tmpField.items[maybeIndex]
         else tmp[tmpField.id] = undefined
-      } tmp[tmpField.id] = undefined
+      } else tmp[tmpField.id] = undefined
       break
     }
     case FieldType.CHECKBOX: {
@@ -40,8 +40,7 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
             return list
           }, [])
         )
-      }
-      else tmp[tmpField.id] = []
+      } else tmp[tmpField.id] = []
       break
     }
     case FieldType.SELECT: {
@@ -55,7 +54,7 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
         const maybeIndex = tmpField.items.map((item) => item.value).indexOf(defaultId)
         if (maybeIndex >= 0) tmp[tmpField.id] = tmpField.items[maybeIndex]
         else tmp[tmpField.id] = undefined
-      } tmp[tmpField.id] = undefined
+      } else tmp[tmpField.id] = undefined
       break
     }
     }

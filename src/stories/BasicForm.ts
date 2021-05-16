@@ -65,6 +65,23 @@ export default [
             ]
           }
         ]
+      },
+      {
+        type: FieldType.SECTION,
+        orientation: Orientation.Row,
+        children: [
+          {
+            type: FieldType.SELECT,
+            id: 'select',
+            label: 'Select an option',
+            required: true,
+            items: [
+              { value: 0, label: 'Dog' },
+              { value: 1, label: 'Cat' },
+              { value: 2, label: 'Fish' }
+            ]
+          }
+        ]
       }
     ]
   }
