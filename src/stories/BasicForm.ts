@@ -79,7 +79,8 @@ export default [
               { value: 0, label: 'Dog' },
               { value: 1, label: 'Cat' },
               { value: 2, label: 'Fish' }
-            ]
+            ],
+            placeholder: 'Select'
           },
           {
             type: FieldType.COLOR,

@@ -153,7 +153,8 @@ const Form = ({
     case FieldType.SELECT: {
       const {
         id,
-        items
+        items,
+        placeholder
       } = field as SelectField
       return (
         <components.select
@@ -163,6 +164,11 @@ const Form = ({
             setData((prev) => ({ ...prev, [id]: obj }))
           }}
         >
+          {
+            placeholder && (
+              <components.selectoption value="" selected disabled hidden>{placeholder}</components.selectoption>
+            )
+          }
           {
             (items || []).map((item, i) => (
               <components.selectoption

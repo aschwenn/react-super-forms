@@ -91,6 +91,8 @@ export interface SelectField extends Field {
   items: Array<MultiOption>
   /** default value to be passed when rendered */
   defaultValue?: string | MultiOption
+  /** placeholder value to be rendered as disabled option */
+  placeholder?: string
 }
 
 export interface ColorField extends Field {
