@@ -17,7 +17,8 @@ export enum OverloadComponent {
   CHECKBOX = 'checkbox',
   CHECKBOX_GROUP = 'checkboxgroup',
   SELECT = 'select',
-  SELECT_OPTION = 'selectoption'
+  SELECT_OPTION = 'selectoption',
+  COLOR_PICKER = 'colorpicker'
 }
 
 export interface Button extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}

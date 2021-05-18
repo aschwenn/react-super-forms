@@ -1,4 +1,4 @@
-import { CheckboxField, Field, FieldType, MultiOption, RadioField, SelectField, TextAreaField, TextField } from '../../types'
+import { CheckboxField, ColorField, Field, FieldType, MultiOption, RadioField, SelectField, TextAreaField, TextField } from '../../types'
 
 export default (flattened_fields: Array<Field>): Record<string, string | number | boolean | MultiOption> => {
   const tmp = {}
@@ -55,6 +55,11 @@ export default (flattened_fields: Array<Field>): Record<string, string | number 
         if (maybeIndex >= 0) tmp[tmpField.id] = tmpField.items[maybeIndex]
         else tmp[tmpField.id] = undefined
       } else tmp[tmpField.id] = undefined
+      break
+    }
+    case FieldType.COLOR: {
+      const tmpField = f as ColorField
+      tmp[tmpField.id] = tmpField.defaultValue
       break
     }
     }

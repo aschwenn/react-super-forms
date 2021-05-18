@@ -92,3 +92,8 @@ export interface SelectField extends Field {
   /** default value to be passed when rendered */
   defaultValue?: string | MultiOption
 }
+
+export interface ColorField extends Field {
+  /** default value to be passed when rendered */
+  defaultValue?: string
+}

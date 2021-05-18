@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import {
   CheckboxField,
+  ColorField,
   Field,
   FieldType,
   FormProps, MultiOption, Orientation, OverloadComponent, OverloadComponentUnion, RadioField, Section, SelectField, TextAreaField, TextField
@@ -175,6 +176,25 @@ const Form = ({
             ))
           }
         </components.select>
+      )
+    }
+    case FieldType.COLOR: {
+      const {
+        id,
+        ...tmp
+      } = field as ColorField
+      const fieldProps = removeExtraProps(tmp as ColorField)
+      return (
+        <components.colorpicker
+          id={id}
+          name={id}
+          value={data[id] as string}
+          onChange={(e) => {
+            const tmp = e.target.value
+            setData((prev) => ({ ...prev, [id]: tmp }))
+          }}
+          {...fieldProps}
+        />
       )
     }
     }

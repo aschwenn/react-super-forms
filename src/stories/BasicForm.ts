@@ -80,6 +80,12 @@ export default [
               { value: 1, label: 'Cat' },
               { value: 2, label: 'Fish' }
             ]
+          },
+          {
+            type: FieldType.COLOR,
+            id: 'color',
+            label: 'Select a color',
+            required: true
           }
         ]
       }
